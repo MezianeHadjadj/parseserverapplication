@@ -5,7 +5,7 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGOLAB_URI;
-
+var databaseUri ="mongodb://Meziane:mezianetestdb@ds017248.mlab.com:17248/dbcombyne";
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
@@ -21,11 +21,20 @@ var api = new ParseServer({
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
 
+
+
+
+
+
 var app = express();
 
 // Serve the Parse API on the /parse URL prefix
 var mountPath = process.env.PARSE_MOUNT || '/parse';
 app.use(mountPath, api);
+
+
+
+
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
